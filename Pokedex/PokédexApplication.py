@@ -3,7 +3,7 @@ from Pokedex.Services.PokemonFileManagement import FileManagement
 
 
 def main():
-    pokedex = Pokédex(1)
+    pokedex = Pokédex()
 
     while True:
         print("\n----- Pokédex Menu -----")
