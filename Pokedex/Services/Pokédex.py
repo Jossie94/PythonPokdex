@@ -4,10 +4,10 @@ from Pokedex.Models.Type import Type
 
 
 class Pokédex:
-    def __init__(self, pokedexNr):
-        self.__pokedexNr = pokedexNr
+    def __init__(self):
         self.__pokemon_list = []
 
+    # GET 
     def get_pokemon_list(self):
         return self.__pokemon_list
 
@@ -48,9 +48,6 @@ class Pokédex:
     def show_all_pokemon(self):
         for pokemon in self.__pokemon_list:
             print(pokemon)
-
-    def get_specific_pokemon(self, pokemon):
-        print(pokemon)
 
     # UPDATE
     def update_pokemon(self):
@@ -133,7 +130,7 @@ class Pokédex:
             print("Pokémon not found.")
             return False
 
-
+    # SORT
     def sort_pokemon(self):
         print("\n----- Sort Pokémon -----")
         print("1. Sort Name")
