@@ -28,16 +28,19 @@ classDiagram
     }
 
     class Pokedex["Pokédex"] {
-        -int __pokedexNr
         -list __pokemon_list
-        +__init__(pokedexNr)
+        +__init__()
         +get_pokemon_list() list
-        +create_Pokémon(pokemon)
+        +create_Pokémon()
         +show_all_pokemon()
-        +get_specific_pokemon(pokemon)
-        +update_pokemon_name(old_name, new_name)
-        +delete_pokemon(name)
-        +__str__() str
+        +update_pokemon()
+        +delete_pokemon()
+        +sort_pokemon()
+    }
+
+    class FileManagement {
+        +save_to_file(pokemon_list) bool
+        +read_from_file() list
     }
 
     class Type {
@@ -66,6 +69,6 @@ classDiagram
     Pokemon --> Type : has type
     Pokemon --> Color : has color
     PokedexApplication ..> Pokedex : uses
-    PokedexApplication ..> Pokemon : creates
-    PokedexApplication ..> Type : reads input
-    PokedexApplication ..> Color : reads input
+    PokedexApplication ..> FileManagement : uses
+    Pokedex ..> Pokemon : creates and manages
+    FileManagement ..> Pokemon : saves and reads
