@@ -1,5 +1,8 @@
 from Pokedex.Services.Pokédex import Pokédex
 from Pokedex.Services.PokemonFileManagement import FileManagement
+from Pokedex.Models.Pokémon import Pokémon
+from Pokedex.Models.Type import Type
+from Pokedex.Models.Color import Color
 
 
 def main():
@@ -58,3 +61,30 @@ def main():
 
 if __name__ == "__main__":
     main()
+"""
+# Testing Getters Pokémon class with Enums
+print("--- Getter test ---")
+pokemonBulbasaur = Pokémon("Bulbasaur", Type.Grass, Color.Green, 1.1, 5, 1)
+
+print(pokemonBulbasaur.get_name())
+print(pokemonBulbasaur.get_type())
+print(pokemonBulbasaur.get_color())
+print(pokemonBulbasaur.get_height())
+print(pokemonBulbasaur.get_weight())
+print(pokemonBulbasaur.get_pokedexNr())
+
+print("--- Setter ---")
+
+# Testing Setters Pokémon class with enums
+
+pokemonCharmander = Pokémon("Charmander", Type.Fire, Color.Red, 1.1, 2, 2)
+
+pokemonCharmander.set_name("Charmeleon")
+pokemonCharmander.set_height(1.5)
+pokemonCharmander.set_weight(4)
+
+print(pokemonCharmander.get_name())
+print(pokemonCharmander.get_height())
+print(pokemonCharmander.get_weight())
+
+"""

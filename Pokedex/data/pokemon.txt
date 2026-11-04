@@ -1,9 +1,0 @@
-=== Pokémon Register ===
-
-Name  : Bulbasaur
-Color : Green
-PokédexNr : 1
-Type  : Grass
-Height: 2.0 cm
-Weight: 5.0 kg
-------------------------------

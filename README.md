@@ -2,40 +2,53 @@
 Disposition Pokédex
 
 Indledning
-Projektet handler om man kan oprette sin egen Pokémon (i simpel version) og det gemmes i en Pokédex. Brugeren kan derefter se sin Pokémon i Pokédexet og redigere eller slette. 
+Projektet handler om, at man kan oprette sin egen Pokémon (i en simpel version), og den gemmes i en Pokédex. Brugeren kan derefter se sin Pokémon i Pokédexet, redigere eller slette den.
 
 Funktionalitet
 
 Input
 
-Systemtet tager input fra brugeren oprette, læse, redigere og slette en Pokémon og viser resultatet ind i konsolen
+Systemet tager input fra brugeren for at oprette, læse, redigere og slette en Pokémon og viser resultatet i konsollen. Brugeren indtaster navn, type, pokedexnummer, højde, farve og vægt.
+
 Brugerforløb
-Pokédex starter op og brugeren vælger så først de opretter en Pokémon (med mindre gemt i fil) fordi der er ikke database der gemmer den information og så taster brugeren ind de forskellige attributter (navn, type, dexnummer, højde, farve, og vægt). Så kommer de tilbage til menu og kan vælge så om de vil se deres Pokémon i liste, ændre, slette eller gem i fil
+Pokédex starter op, og brugeren vælger først, om der skal oprettes en Pokémon. Derefter indtaster brugeren de forskellige attributter. Brugeren kommer tilbage til menuen og kan vælge, om Pokémon skal vises, ændres, slettes, sorteres eller gemmes i en fil.
 
 Vis forløbet
 
-Se Diagram og screenshhots
+Se diagram og screenshots for eksempler på brugerforløbene.
 
-Vigtigst funktioner
--	Menu, for komme til de forskellige CRUD operationer
--	Oprette Pokémon, for havde en Pokémon vi kan udføre forskellige CRUD  
--	Og Læse for se/verificere vi har en eller flere 
+Vigtigste funktioner
+- Menuen giver adgang til de forskellige CRUD-operationer.
+- Oprettelse af Pokémon er vigtig, fordi de andre CRUD-operationer arbejder med de Pokémon, der er oprettet.
+- Læsning viser og verificerer, at vi har en eller flere Pokémon.
+- Sortering og filhåndtering er ekstra funktioner.
 
 Hoveddelen
 
-Pokédex project er en modul, med en Model folder der indeholder Pokémon properties og to enum classes, Color og Type. 
-Så har vi Services folder med Pokédex class og Filemanagement, hvor vi har vores CRUD logik, sortering og fil håndtering
-Så applikationen der håndtere selve UI menu og en test folder med py test class.
+Pokédex-projektet er et modul med en Model-mappe, der indeholder Pokémon-properties og to enum-klasser, Color og Type.
+Der er også en Services-mappe med Pokédex-klassen og FileManagement, hvor CRUD-logik, sortering og filhåndtering ligger. Applikationsmodulet `PokédexApplication.py` håndterer UI-menuen.
 
-De vigtigst classes ligger i Pokédex, hele CRUD ligger der i – Oprette en Pokémon, læse listen, opdatere, slette.
-Jeg har delt op på den her måde for adskille deres roller og funktioner, f.eks en Pokémon er ikke det samme som en Pokédex hvor man håndtere den Pokémon. Jeg kan også lige adskille hvad er model classes og hvilke er service classes, og applikation class er tynd fordi jeg foretrækker den kun kalder på functions fordi jeg bruger som main – jo tyndere main er, bedre arktitektur og læselig kode. 
+De vigtigste klasser ligger i Pokédex. Her ligger funktionerne til at oprette en Pokémon, læse listen, opdatere, slette og sortere. `PokédexApplication.py` har kun `main()`, fordi den primært skal kalde funktionerne og vise menuen.
 
-Det er composite relation mellem Pokémon og Pokédex class – Pokémon har properties objekterog Pokédex bruger de til oprette Pokémon object eller andre CRUD operationer. 
-Pokémon class har nærmest alle mine attributer som projketet skal bruge, bortset fra mine enum classes og Pokédex har mine vigtigst functions, som den gøre brug af fra Pokémon class. 
+Jeg har delt det op på denne måde for at adskille rollerne. En Pokémon er ikke det samme som en Pokédex, som håndterer Pokémon. FileManagement har ansvaret for at gemme og læse data fra filen.
 
-Jeg har brugt encaupsolution, CRUD, datatyper, classes, objekter.  Constructor bruger encaupslotation og mine getter setter metoder. 
+Klasserne samarbejder ved, at `main()` kalder metoder i Pokédex, og Pokédex opretter og håndterer Pokémon-objekter. Pokédex har derfor en "har-en"-relation til Pokémon:
 
-Den kan nok udvides til man bruger database til at gemme Pokémon i stedet for filer, eller hver CRUD operation havde sin egen class. 
+```python
+self.__pokemon_list = []
+```
+
+Det er også et eksempel på composition, fordi Pokédex har en liste med Pokémon-objekter.
+
+Den vigtigste klasse er Pokédex. Den har attributten `__pokemon_list` og metoderne `create_Pokémon()`, `show_all_pokemon()`, `update_pokemon()`, `delete_pokemon()` og `sort_pokemon()`.
+
+Jeg har brugt encapsulation, CRUD, datatyper, klasser og objekter. Constructor bruger encapsulation sammen med mine getter- og setter-metoder. Et eksempel på encapsulation er `self.__pokemon_list`, hvor `__` gør attributten privat/name-mangled, så den tilgås gennem metoder.
+
+Jeg kunne godt forbedre projektet ved at bruge en database i stedet for filer, eller ved at give hver CRUD-operation sin egen klasse. Det er dog mere avanceret end det, der er nødvendigt i dette projekt.
+
+Se også [klassediagrammet](PokemonDiagram.mmd).
 
 Konklusion
-Rigtigt meget af strukturen følger marsvin applikationen, med nogle ændringer som f.eks PokédexApplication har væsentligt mindre kode, og det er bevidst lave, samt at update har match case på alle sine attributer i stedet for kun update på navn. De forbedringer jeg vil lave er udenfor pensumet, fordi det er mere avanceret, spørg Josefine, forfatteren. 
+Strukturen følger i høj grad marsvin-applikationen, men med nogle ændringer - For eksempel har PokédexApplication væsentligt mindre kode, fordi den kun binder menuen sammen med funktionerne. Update har også match-case på alle de attributter, der kan opdateres, i stedet for kun at opdatere navnet.
+
+Projektet kan senere udvides med en ekstra enum-klasse, for eksempel Secondary Type eller abilities, men det ligger uden for projektets scope.
