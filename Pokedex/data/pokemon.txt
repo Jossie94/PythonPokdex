@@ -1,0 +1,16 @@
+=== Pokémon Register ===
+
+Name  : Bulbasaur
+Color : Green
+PokédexNr : 1
+Type  : Grass
+Height: 0.2 cm
+Weight: 10.0 kg
+------------------------------
+Name  : Charmander
+Color : Red
+PokédexNr : 2
+Type  : Fire
+Height: 100.0 cm
+Weight: 1.0 kg
+------------------------------

@@ -45,10 +45,7 @@ class FileManagement:
     
                 lines = file.readlines()
     
-            i = 0
-    
-            while i < len(lines):
-    
+            for i in range(len(lines)):
                 if lines[i].startswith("Name"):
                     name = lines[i].split(":")[1].strip()
 
@@ -99,8 +96,6 @@ class FileManagement:
                     )
     
                     pokemon_list.append(pokemon)
-    
-                i += 1
     
             return pokemon_list
         
